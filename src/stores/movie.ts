@@ -44,8 +44,6 @@ export const useMovieStore = defineStore({
       try {
         const { data } = await axios.get<SearchMovieResponseType>(`/movie/${id}/recommendations`)
 
-        console.log(data, 'here');
-
         this.recommendations = data.results.map((movie) => ({
           ...movie,
           poster_path: movie.poster_path
@@ -54,7 +52,7 @@ export const useMovieStore = defineStore({
         }))
 
       } catch (error) {
-        console.error('Error fetch movie: ', error)
+        console.error('Error fetch recommendations: ', error)
       }
     }
   }
